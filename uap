@@ -21,6 +21,24 @@ def download(response) :
   for i in hasil :
     if response == i['name'] :
       print("\nTempat Pembacaan :", i['recitation'])
+      
+ 
+ #module search.py
+ from.requests import*
+ 
+def search(response) :
+  for i in hasil:
+    if response == i['name']:
+      print("\nNama Surah : ",i['name'],"\nArti Surah  : ",i['name_translations'],"\nNomor dari Ayat Tersebut : ",i['number_of_ayah'],"\nSurat Ke: ",i['number_of_surah'],
+            "\nTempat Diturunkan : ",i['place'],"\nTipe :",i['type'])
+            
+ #module download.py
+ from.requests import*
+
+def download(response) :
+  for i in hasil :
+    if response == i['name'] :
+      print("\nTempat Pembacaan :", i['recitation'])
 
 
 
