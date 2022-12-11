@@ -69,7 +69,7 @@ def main():
         while(True):
           cari = input("Apakah anda ingin mencari surah?(Y/N) : ")
           
-          if cari == 'Y' or 'y' : 
+          if cari == 'Y' : 
             judul_buku  = input('\nNama Surah Yang Akan Dicari: ')
             search(judul_buku.title())
 
@@ -79,7 +79,7 @@ def main():
      
             continue
             
-          elif (cari == 'N' or 'n') :
+          elif (cari == 'N') :
             print("Anda Membatalkan untuk mencari surah!!")
             break
             
@@ -90,7 +90,7 @@ def main():
       elif(pilihMenu == 3):
         while(True):
           d = input("Apakah anda ingin mendowload?(Y/N)?")
-          if d == 'Y' or 'y':
+          if d == 'Y' :
             judul_buku = input('\nNama Surah : ')
             download(judul_buku.title())
           elif d == 'N'or 'n':
@@ -118,7 +118,7 @@ def main():
       elif(pilihMenu == 5 ):
         baru = input("\nApakah anda ingin membuat dokumen baru ? Y/N : ")
 
-        if baru == 'Y' or 'y' :
+        if baru == 'Y'  :
           print("beri nama file dengan akhiran .txt")
           nama_file = input("masukkan nama file : ").strip()
           isi_file = input("masukkan teks :")
@@ -126,7 +126,7 @@ def main():
           outfile.write("\n" +isi_file +"\n")
           outfile.close()
 
-        elif baru == 'N' or 'n' :
+        elif baru == 'N'  :
           print("1. baca catatan \n2. menambah catatan")
           catatan = input("masukkan pilihan : ")
           if catatan == '1':
@@ -139,14 +139,18 @@ def main():
                 print("File " + nama_file+" tidak ditemukan . Coba lagi" )
             print("\nIsi File :\n" + infile.read())
             infile.close()
-          else :
+          elif catatan == '2':
             nama_file = input("masukkan nama file : ")
             outfile = open(nama_file, "a") 
             isi_file = input("masukkan teks  :")
             outfile.write("\n" + isi_file + "\n")
             outfile.close()
+          else :
+            print("Input yang anda masukan tidak sesuai")
 
-
+        else :
+          print("Input yang anda masukan tidak sesuai")
+          
       elif(pilihMenu == 6):
         print("Anda Keluar dari Menu!")
         break
