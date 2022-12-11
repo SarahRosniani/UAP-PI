@@ -5,6 +5,16 @@ from.search import *
 from.download import *
 from.daftar import *
 
+#module requests.py
+
+import requests
+import json 
+
+response = requests.get('https://raw.githubusercontent.com/penggguna/QuranJSON/master/quran.json')
+hasil = response.json()
+hasil
+
+
 
 ! pip install requests
 
