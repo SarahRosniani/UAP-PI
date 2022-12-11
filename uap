@@ -1,0 +1,118 @@
+! pip install requests
+
+from package import search, download, daftar
+
+
+def main():   
+  Nama = input("Masukkan Nama anda :")
+  print(f"Hello {Nama.title()},\nApakah anda ingin melanjutkan?\n1.Ya\n2.No")
+  choose = input("pilih :")
+  if choose == '1':
+    while(True):
+      print('\t\t\tMENU Al-Quran\n') 
+      menu = ['1. Melihat Daftar Al-Quran','2. Mencari Surah','3. Mendownload','4. Riwayat Pencarian','5. Catatan','6. Keluar']
+    
+      for i in range(len(menu)):
+        print(menu[i])
+        
+    
+      pilihMenu = int(input('Silahkan pilih menu : '))
+      
+      if(pilihMenu==1):
+        daftar()
+        
+      elif(pilihMenu == 2):
+        while(True):
+          cari = input("Apakah anda ingin mencari surah?(Y/N) : ")
+          
+          if cari == 'Y' or 'y' : 
+            judul_buku  = input('\nNama Surah Yang Akan Dicari: ')
+            search(judul_buku.title())
+
+            outfile = open(Nama.title(), "a")
+            outfile.write("\n" +judul_buku +"\n")
+            outfile.close()
+     
+            continue
+            
+          elif (cari == 'N' or 'n') :
+            print("Anda Membatalkan untuk mencari surah!!")
+            break
+            
+          else :
+            print("Input yang anda masukkan salah!!")
+            continue
+      
+      elif(pilihMenu == 3):
+        while(True):
+          d = input("Apakah anda ingin mendowload?(Y/N)?")
+          if d == 'Y' or 'y':
+            judul_buku = input('\nNama Surah : ')
+            download(judul_buku.title())
+          elif d == 'N'or 'n':
+            print("Anda membatlkan download ")
+            break
+          else :
+            print("Input yang anda masukkan salah!")
+            continue
+      
+      elif(pilihMenu == 4):
+        print("\n\t\t\tHistori pencarian ")
+
+        while True :
+          try :
+            nama_file = input("masukkan nama pengguna :")
+            infile = open(nama_file.title(), "r")
+            break
+          except IOError:
+            print( nama_file.title()+" belum melakukan pencarian . Coba lagi" )
+            
+
+        print("Rincian histori :" + infile.read())
+        infile.close()
+
+      elif(pilihMenu == 5 ):
+        baru = input("\nApakah anda ingin membuat dokumen baru ? Y/N : ")
+
+        if baru == 'Y' or 'y' :
+          print("beri nama file dengan akhiran .txt")
+          nama_file = input("masukkan nama file : ").strip()
+          isi_file = input("masukkan teks :")
+          outfile = open(nama_file, "w")
+          outfile.write("\n" +isi_file +"\n")
+          outfile.close()
+
+        elif baru == 'N' or 'n' :
+          print("1. baca catatan \n2. menambah catatan")
+          catatan = input("masukkan pilihan : ")
+          if catatan == '1':
+            while True :
+              try :
+                nama_file = input("masukkan nama file :")
+                infile = open(nama_file, "r")
+                break
+              except IOError:
+                print("File " + nama_file+" tidak ditemukan . Coba lagi" )
+            print("\nIsi File :\n" + infile.read())
+            infile.close()
+          else :
+            nama_file = input("masukkan nama file : ")
+            outfile = open(nama_file, "a") 
+            isi_file = input("masukkan teks  :")
+            outfile.write("\n" + isi_file + "\n")
+            outfile.close()
+
+
+      elif(pilihMenu == 6):
+        print("Anda Keluar dari Menu!")
+        break
+      else :
+        print("Inputan yang anda masukan salah atau tidak sesuai")
+
+  elif choose == '2':
+    print("Program terhenti")
+  else :
+    print("Input yang anda masukan tidak sesuai")
+                
+
+main()
