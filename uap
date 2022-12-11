@@ -1,3 +1,11 @@
+#package
+#module __init__.py
+
+from.search import *
+from.download import *
+from.daftar import *
+
+
 ! pip install requests
 
 from package import search, download, daftar
